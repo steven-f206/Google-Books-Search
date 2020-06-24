@@ -1,39 +1,44 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
-const bookSave = new Schema(
+const bookSchema = new Schema(
   {
-    exercises: [
+    books: [
       {
-        type: {
+        bookId: {
           type: String,
           trim: true,
-          required: "Enter an exercise type"
+          required: "Enter a book's google id"
         },
-        name: {
+        title: {
           type: String,
           trim: true,
-          required: "Enter an exercise name"
+          required: "Enter a book title"
+        },
+        authors: {
+          type: Array,
+          trim: true,
+          required: "Enter a list of authors"
+        },
+        description: {
+          type: String,
+          trim: true,
+          required: "Enter a description of a book"
+        },
+        imgUrl: {
+          type: String,
+          trim: true,
+          required: "Enter an image url"
+        },
+        linkUrl: {
+          type: String,
+          trim: true,
+          required: "Enter and image url"
         },
       }
     ]
-  },
-  {
-    toJSON: {
-      // include any virtual properties when data is requested
-      virtuals: true
-    }
   }
 );
-
-// adds a dynamically-created property to schema
-workoutSchema.virtual("totalDuration").get(function() {
-  // "reduce" array of exercises down to just the sum of their durations
-  return this.exercises.reduce((total, exercise) => {
-    return total + exercise.duration;
-  }, 0);
-});
 
 const bookSave = mongoose.model("bookSave", bookSchema);
 
