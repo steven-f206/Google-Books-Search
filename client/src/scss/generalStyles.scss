@@ -16,7 +16,6 @@ button{
 
 #wrapper{
   width:100%;
-  max-width:1200px;
   margin:0 auto;
   padding-top: 180px;
   box-sizing:border-box;
@@ -39,5 +38,8 @@ h1{
 @media only screen and (min-width: 600px) {
   #wrapper{
     padding-top: 150px;
+  }
+  #wrapper-contents{
+    max-width:1200px;
   }
 }
