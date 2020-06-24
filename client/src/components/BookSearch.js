@@ -3,12 +3,11 @@ import { AppContext } from '../utils/AppContext';
 
 const BookSearch = () => {
 
-  const { search, bookData, fetchData, modalCopy } = useContext(AppContext);
+  const { search, bookData, fetchData } = useContext(AppContext);
   // eslint-disable-next-line
   let [books, setBooks] = bookData;
   let [fetching, setFetching] = fetchData;
   let [searching, setSearching] = search;
-  let [modalcopyState, setModalCopyState] = modalCopy;
 
   const handleChange = e => {
     setSearching(searching = e.target.value);
@@ -52,6 +51,7 @@ const BookSearch = () => {
           type="text"
           placeholder="Filter by book name..."
           value={searching}
+          name="book-search"
           onChange={handleChange}
           onKeyPress={(e) => handleKeyPress(e)}
         />
