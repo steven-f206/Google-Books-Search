@@ -4,8 +4,12 @@ import { AppContext } from '../utils/AppContext';
 const BookTable = () => {
 
   // Grab Search data to filter against
-  const { bookData, fetchData } = useContext(AppContext);
+  const { bookData, fetchData, modal, modalCopy } = useContext(AppContext);
   let [fetching/*, setFetching*/] = fetchData;
+  // eslint-disable-next-line
+  let [modalState, setModalState] = modal;
+  // eslint-disable-next-line
+  let [modalCopyState, setModalCopyState] = modalCopy;
 
   const API = {
     async saveBooks(id) {
@@ -31,7 +35,26 @@ const BookTable = () => {
 
       // eslint-disable-next-line
       const json = await res;
-      // console.log(json);
+
+      if (json.status === 200) {
+        setModalState(modalState = "");
+        setModalCopyState(modalCopyState = "Book added to saved books.");
+        setTimeout(() => { setModalState(modalState = "set") }, 500);
+        setTimeout(() => { setModalState(modalState = "") }, 3000);
+        setTimeout(() => { setModalState(modalState = "hide") }, 3500);
+      } else if (json.status === 304) {
+        setModalState(modalState = "");
+        setModalCopyState(modalCopyState = "Book already in saved books.");
+        setTimeout(() => { setModalState(modalState = "not-set") }, 500);
+        setTimeout(() => { setModalState(modalState = "") }, 3000);
+        setTimeout(() => { setModalState(modalState = "hide") }, 3500);
+      } else {
+        setModalState(modalState = "");
+        setModalCopyState(modalCopyState = "Error action at this time cannot be completed.");
+        setTimeout(() => { setModalState(modalState = "not-set") }, 500);
+        setTimeout(() => { setModalState(modalState = "") }, 3000);
+        setTimeout(() => { setModalState(modalState = "hide") }, 3500);
+      }
     }
   }
 

@@ -2,13 +2,16 @@ import React, { useEffect, useContext } from 'react';
 import { AppContext } from '../utils/AppContext';
 
 
-
 function SavedBooks() {
 
     // Call Context 
-    const { savedBookData } = useContext(AppContext);
+    const { savedBookData, modal, modalCopy } = useContext(AppContext);
     // Handle mobile class for operating menu
     let [savedBooks, setSavedBooks] = savedBookData;
+    // eslint-disable-next-line
+    let [modalState, setModalState] = modal;
+    // eslint-disable-next-line
+    let [modalCopyState, setModalCopyState] = modalCopy;
 
     const API = {
         async savedBooks() {
@@ -32,9 +35,19 @@ function SavedBooks() {
             console.log(json);
 
             if (json.status === 200) {
+                setModalState(modalState = "");
+                setModalCopyState(modalCopyState = "Book removed from saved books.");
+                setTimeout(() => { setModalState(modalState = "set") }, 500);
+                setTimeout(() => { setModalState(modalState = "") }, 3000);
+                setTimeout(() => { setModalState(modalState = "hide") }, 3500);
                 setSavedBooks(savedBooks = savedBooks.filter(data => data.bookId !== id));
+            } else {
+                setModalState(modalState = "");
+                setModalCopyState(modalCopyState = "Error action at this time cannot be completed.");
+                setTimeout(() => { setModalState(modalState = "not-set") }, 500);
+                setTimeout(() => { setModalState(modalState = "") }, 3000);
+                setTimeout(() => { setModalState(modalState = "hide") }, 3500);
             }
-
         }
     }
 
@@ -48,6 +61,7 @@ function SavedBooks() {
 
     return (
         <section id="savedBooks">
+            <header><h1>Google Books Saved</h1></header>
             {savedBooks === '' ?
                 ''
                 : (

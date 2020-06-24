@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
     <nav>
-      <h3>Google Books</h3>
+      <p>Google Books</p>
       <ul className="nav-links">
-        <Link to='/'>
-        <li>Home</li>
-        </Link>
-        <Link to='/saved'>
-        <li>Saved</li>
-        </Link>
+        <NavLink to='/' exact>
+          <li>Home</li>
+        </NavLink>
+        <NavLink to='/saved'>
+          <li>Saved</li>
+        </NavLink>
       </ul>
     </nav>
   )

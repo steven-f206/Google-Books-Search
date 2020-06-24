@@ -12,7 +12,9 @@ export const AppProvider = props => {
   const [fetching, setFetching] = useState(false);
   // Set search data
   const [searching, setSearching] = useState("");
-
+  // Set Modal state and message
+  const [modalState, setModalState] = useState("");
+  const [modalCopyState, setModalCopyState] = useState("");
 
   return (
     <AppContext.Provider value={{
@@ -20,6 +22,8 @@ export const AppProvider = props => {
       savedBookData: [savedBooks, setSavedBooks],
       fetchData: [fetching, setFetching],
       search: [searching, setSearching],
+      modal: [modalState, setModalState],
+      modalCopy: [modalCopyState, setModalCopyState]
     }}>
       {props.children}
     </AppContext.Provider>
