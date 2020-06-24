@@ -45,7 +45,7 @@ nav{
   align-items:center;
   list-style:none;
   padding:0;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
 @media only screen and (min-width: 600px) {
@@ -56,6 +56,8 @@ nav{
       margin-left:20px;
       margin-top: 27px;
     }
-    
+    .nav-links{
+      margin-top: 20px;
+    }
   }
 }
