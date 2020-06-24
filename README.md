@@ -1,7 +1,14 @@
-# Google-Books-Search
-Assignment for University of Toronto coding bootcamp, Google Books Search.
+# MERN Google-Books-Search
+Assignment for University of Toronto coding bootcamp.
 
-his project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MERN stack application that uses Google Books API to save or remove books from a database. This is accomplished using REST to complete CRUD operations to view, add, and remove books from the application.
+
+
+![markdown-preview-image](client/public/content/img/markdown-preview-image.png)
+
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
