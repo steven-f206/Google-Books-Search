@@ -27,6 +27,8 @@ connectDB();
 // Define API routes here
 
 /*  POST REQUEST */
+
+// Grab books based upon search box
 app.post('/api/books', async (req, res) => {
   let searchQuery = req.body.searching;
   const googleConfig = process.env.GOOGLE_BOOKS;
@@ -35,6 +37,7 @@ app.post('/api/books', async (req, res) => {
   res.send(data.data);
 });
 
+// Insert books into database
 app.post('/api/saveBooks', async (req, res) => {
 
   let searchQuery = req.body;
@@ -59,6 +62,35 @@ app.post('/api/saveBooks', async (req, res) => {
         });
     }
   });
+});
+
+/*  GET REQUEST */
+
+app.get('/api/savedBooks', async (req, res) => {
+  db.bookSave.find({})
+  .then(dbbookSave => {
+   // console.log(dbbookSave);
+   res.json(dbbookSave);
+  })
+  .catch(err => {
+   res.json(err);
+  });
+});
+
+/*  DELETE REQUEST */
+
+app.delete('/api/removeBook', async (req, res) => {
+  //console.log(req.body);
+  const id = req.body.id;
+
+  db.bookSave.findOneAndRemove({ bookId: id })
+  .then(() => {
+    res.sendStatus(200); 
+  })
+  .catch(err => {
+   res.status(500).send(err);
+  });
+
 });
 
 

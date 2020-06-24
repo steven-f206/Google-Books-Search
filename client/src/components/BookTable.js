@@ -29,8 +29,9 @@ const BookTable = () => {
         headers: { "Content-Type": "applicatioon/json" }
       });
 
+      // eslint-disable-next-line
       const json = await res;
-      console.log(json);
+      // console.log(json);
     }
   }
 

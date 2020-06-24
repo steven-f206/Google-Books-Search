@@ -3,7 +3,7 @@ import "./scss/App.scss";
 import {AppProvider} from './utils/AppContext';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Saved from './components/Saved';
+import SavedBooks from './components/SavedBooks';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <section id="wrapper"> 
         <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/saved" component={Saved}></Route>
+          <Route path="/saved" component={SavedBooks}></Route>
         </Switch>
         </section>
       </div>
