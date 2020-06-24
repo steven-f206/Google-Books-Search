@@ -2,6 +2,10 @@ html, body, #root, .App {
   height: 100%;
 }
 
+.App{
+  min-height: 600px;
+}
+
 body{
   min-height:100%;
 }
