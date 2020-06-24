@@ -21,7 +21,7 @@ function App() {
                 <Route path="/saved" activeClassName='is-active' component={SavedBooks}></Route>
               </Switch>
             </div>
-            <Footer />
+            {/* <Footer /> */}
           </section>
           <MessageModal />
         </div>
