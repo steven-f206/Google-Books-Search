@@ -17,6 +17,11 @@ const BookSearch = () => {
 
     async booksCall(e) {
       e.preventDefault();
+
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+        e.target.querySelector("input").blur();
+      }
+
       if (searching === '') {
 
       } else {
@@ -48,7 +53,7 @@ const BookSearch = () => {
       </header>
 
       <section className="filterBar">
-        <form action="">
+        <form onSubmit={(e) => API.booksCall(e)}>
           <input
             type="text"
             placeholder="Filter by book name..."
@@ -57,7 +62,7 @@ const BookSearch = () => {
             onChange={handleChange}
             onKeyPress={(e) => handleKeyPress(e)}
           />
-          <button onClick={(e) => API.booksCall(e)}>Search</button>
+          <button>Search</button>
         </form>
       </section>
     </React.Fragment>
