@@ -15,15 +15,13 @@ function App() {
         <div className="App">
           <Nav />
           <section id="wrapper">
-            <div id="wrapper-contents">
-              <Switch>
-                <Route path="/" exact activeClassName='is-active' component={Home}></Route>
-                <Route path="/saved" activeClassName='is-active' component={SavedBooks}></Route>
-              </Switch>
-            </div>
-            {/* <Footer /> */}
+            <Switch>
+              <Route path="/" exact activeClassName='is-active' component={Home}></Route>
+              <Route path="/saved" activeClassName='is-active' component={SavedBooks}></Route>
+            </Switch>
           </section>
           <MessageModal />
+          <Footer />
         </div>
       </Router>
     </AppProvider>
