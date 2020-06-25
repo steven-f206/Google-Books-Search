@@ -3,7 +3,7 @@ html, body {
 }
 
 body{
-  min-height: 100%;
+  min-height:100%;
 }
 
 
@@ -20,7 +20,9 @@ button{
 
 #wrapper{
   width:100%;
+
   margin:0 auto;
+  
   box-sizing:border-box;
   min-height:calc(100% - 50px);
   display: flex;

@@ -7,18 +7,18 @@ const dbConfig = process.env.MONGODB_URI;
 mongoose.connect(dbConfig, {
   useNewUrlParser: true,
   useFindAndModify: false,
-  useUnifiedTopology: true
+  useUnifiedTopology: true 
 });
 
 let bookSeed = [
-  {
-    bookId: "f6d7*#",
-    title: "Philosopher's Stone",
-    authors: ["J. K. Rowling"],
-    description: "Harry potter book 1",
-    imgUrl: "https://vignette.wikia.nocookie.net/harrypotter/images/f/ff/Pholosophers-Stone_PM.jpg/revision/latest?cb=20161122143651",
-    linkUrl: "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone"
-  }
+      {
+        bookId: "f6d7*#",
+        title: "Philosopher's Stone",
+        authors: ["J. K. Rowling"],
+        description: "Harry potter book 1",
+        imgUrl: "https://vignette.wikia.nocookie.net/harrypotter/images/f/ff/Pholosophers-Stone_PM.jpg/revision/latest?cb=20161122143651",
+        linkUrl: "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone"
+      }
 ];
 
 db.bookSave.deleteMany({})

@@ -5,11 +5,11 @@ const PORT = process.env.PORT || 3001;
 const axios = require('axios');
 const app = express();
 
-// Database Connection Request 
+// Database Connection Request
 require('dotenv/config');
 const connectDB = require("./config/connectDB.js");
 
-// Bring in models
+//Bring in models
 const db = require("./models");
 
 // Define middleware here
@@ -30,38 +30,38 @@ connectDB();
 
 // Grab books based upon search box
 app.post('/api/books', async (req, res) => {
-  let searchQuery = req.body.searching;
-  const googleConfig = process.env.GOOGLE_BOOKS;
-  let response = await axios(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${googleConfig}`);
-  let data = await response;
-  res.send(data.data);
+    let searchQuery = req.body.searching;
+    const googleConfig = process.env.GOOGLE_BOOKS;
+    let response = await axios(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&key=${googleConfig}`);
+    let data = await response;
+    res.send(data.data);
 });
 
 // Insert books into database
 app.post('/api/saveBooks', async (req, res) => {
 
-  let searchQuery = req.body;
-  let mongoValue = [{
-    bookId: searchQuery.id,
-    title: searchQuery.title,
-    authors: searchQuery.authors,
-    description: searchQuery.description,
-    imgUrl: searchQuery.imgUrl,
-    linkUrl: searchQuery.linkUrl
-  }];
+    let searchQuery = req.body;
+    let mongoValue = [{
+      bookId: searchQuery.id,
+      title: searchQuery.title,
+      authors: searchQuery.authors,
+      description: searchQuery.description,
+      imgUrl: searchQuery.imgUrl,
+      linkUrl: searchQuery.linkUrl
+    }];
 
-  db.bookSave.countDocuments({ bookId: mongoValue[0].bookId }, function (err, count) {
-    if (count > 0) {
+    db.bookSave.countDocuments({bookId: mongoValue[0].bookId}, function (err, count){ 
+    if(count>0){
       res.sendStatus(304);
-    } else {
+    }else{
       db.bookSave.collection.insertMany(mongoValue).then(() => {
-        res.sendStatus(200);
-      })
-        .catch(err => {
-          res.json(err);
-        });
-    }
-  });
+         res.sendStatus(200);
+       })
+       .catch(err => {
+         res.json(err);
+       });
+     } 
+  });  
 });
 
 /*  GET REQUEST */

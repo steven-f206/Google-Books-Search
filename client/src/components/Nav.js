@@ -7,10 +7,10 @@ const Nav = () => {
       <p>Google Books</p>
       <ul className="nav-links">
         <NavLink to='/' exact>
-          <li>Home</li>
+        <li>Home</li>
         </NavLink>
         <NavLink to='/saved'>
-          <li>Saved</li>
+        <li>Saved</li>
         </NavLink>
       </ul>
     </nav>

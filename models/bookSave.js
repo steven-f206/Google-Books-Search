@@ -28,12 +28,12 @@ const bookSchema = new Schema(
         imgUrl: {
           type: String,
           trim: true,
-          required: "Enter an image url"
+          required: "Enter a image url"
         },
         linkUrl: {
           type: String,
           trim: true,
-          required: "Enter and image url"
+          required: "Enter a image url"
         },
       }
     ]
