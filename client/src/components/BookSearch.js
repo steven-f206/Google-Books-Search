@@ -1,16 +1,16 @@
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../utils/AppContext';
 
 const BookSearch = () => {
 
-  const {search, bookData, fetchData} = useContext(AppContext);
+  const { search, bookData, fetchData } = useContext(AppContext);
   // eslint-disable-next-line
-  let [books, setBooks] =  bookData;
-  let [fetching, setFetching] =  fetchData;
-  let [searching, setSearching] =  search;
+  let [books, setBooks] = bookData;
+  let [fetching, setFetching] = fetchData;
+  let [searching, setSearching] = search;
 
   const handleChange = e => {
-    setSearching( searching = e.target.value);
+    setSearching(searching = e.target.value);
   };
 
   const API = {
@@ -22,40 +22,40 @@ const BookSearch = () => {
         e.target.querySelector("input").blur();
       }
 
-      if( searching === ''){
+      if (searching === '') {
 
-      }else{
+      } else {
         const res = await fetch("/api/books", {
-        method: "POST",
-        body: JSON.stringify({searching}),
-        headers: { "Content-Type": "application/json" }
+          method: "POST",
+          body: JSON.stringify({ searching }),
+          headers: { "Content-Type": "application/json" }
         });
-    
-       const json = await res.json();
-          setBooks(books = json);
-          if (fetching === false){
-            setFetching(fetching = true)
-          }
+
+        const json = await res.json();
+        setBooks(books = json);
+        if (fetching === false) {
+          setFetching(fetching = true)
         }
       }
     }
+  }
 
-   let handleKeyPress = (e) => {
-      if(e.key === 'Enter'){
-       API.booksCall();
-      }
+  let handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      API.booksCall();
     }
+  }
 
-  return(
+  return (
     <React.Fragment>
       <header>
         <h1>Google Books Search</h1>
       </header>
 
       <section className="filterBar">
-        <form onSubmit={(e) => API.booksCall(e) }>
-          <input 
-            type="text" 
+        <form onSubmit={(e) => API.booksCall(e)}>
+          <input
+            type="text"
             placeholder="Filter by book name..."
             value={searching}
             name="book-search"
