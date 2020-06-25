@@ -1,4 +1,4 @@
-html, body, #root, .App {
+html, body {
   height: 100%;
 }
 
@@ -19,13 +19,20 @@ button{
 }
 
 #wrapper{
-  width:90%;
-  max-width:1200px;
+  width:100%;
   margin:0 auto;
-  padding-top: 180px;
   box-sizing:border-box;
-  //min-height:100%;
   min-height:calc(100% - 50px);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#wrapper-contents{
+  padding-top: 160px;
+  width:90%;
+  margin: 0 auto;
+  flex: 1;
 }
 
 h1{
@@ -34,7 +41,8 @@ h1{
 
 
 @media only screen and (min-width: 600px) {
-  #wrapper{
-    padding-top: 150px;
+  #wrapper-contents{
+    padding-top: 140px;
+    max-width:1200px;
   }
 }
