@@ -8,7 +8,7 @@ let year = new Date().getFullYear();
   return(
     <React.Fragment>
       <footer>
-        <p id="copyright">Copyright © Andy Durette {year}</p>
+        <p id="copyright">Copyright © Steven Ferreira {year}</p>
       </footer>
     </React.Fragment>
   );
