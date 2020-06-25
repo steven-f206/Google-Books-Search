@@ -15,7 +15,8 @@ const BookSearch = () => {
 
   const API = {
 
-    async booksCall() {
+    async booksCall(e) {
+      e.preventDefault();
       if (searching === '') {
 
       } else {
@@ -47,15 +48,17 @@ const BookSearch = () => {
       </header>
 
       <section className="filterBar">
-        <input
-          type="text"
-          placeholder="Filter by book name..."
-          value={searching}
-          name="book-search"
-          onChange={handleChange}
-          onKeyPress={(e) => handleKeyPress(e)}
-        />
-        <button onClick={() => API.booksCall()}>Search</button>
+        <form action="">
+          <input
+            type="text"
+            placeholder="Filter by book name..."
+            value={searching}
+            name="book-search"
+            onChange={handleChange}
+            onKeyPress={(e) => handleKeyPress(e)}
+          />
+          <button onClick={(e) => API.booksCall(e)}>Search</button>
+        </form>
       </section>
     </React.Fragment>
   );

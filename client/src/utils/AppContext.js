@@ -13,7 +13,7 @@ export const AppProvider = props => {
   // Set search data
   const [searching, setSearching] = useState("");
   // Set Modal state and message
-  const [modalState, setModalState] = useState("");
+  const [modalState, setModalState] = useState("hide");
   const [modalCopyState, setModalCopyState] = useState("");
 
   return (
